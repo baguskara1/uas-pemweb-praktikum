@@ -1,0 +1,11 @@
+{
+	"name": "speedmaster/racing-pos",
+	"description": "POS Bengkel Motor Racing - UAS Praktikum Pemrograman Web",
+	"type": "project",
+	"require": {
+		"fpdf/fpdf": "^1.8",
+		"vlucas/phpdotenv": "^5.6",
+		"endroid/qr-code": "^6.1",
+		"phpoffice/phpspreadsheet": "^5.9"
+	}
+}

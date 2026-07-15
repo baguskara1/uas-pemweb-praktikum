@@ -1,0 +1,8 @@
+/vendor/
+.env
+*.log
+/nota/
+.DS_Store
+.playwright-mcp/
+cookies.txt
+*.py
