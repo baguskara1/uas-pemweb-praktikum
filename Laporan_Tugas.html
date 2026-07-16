@@ -1,0 +1,75 @@
+<h1>Laporan Tugas UAS Praktikum Pemrograman Web</h1>
+<h2>1. Deskripsi Project</h2>
+<p>Sistem POS (Point of Sales) Bengkel adalah aplikasi berbasis web yang dirancang untuk mengelola transaksi jasa perbaikan dan penjualan suku cadang (sparepart) pada sebuah bengkel. Aplikasi ini mempermudah pencatatan pelanggan, kendaraan, hingga proses transaksi secara <em>real-time</em> dengan fitur keranjang belanja yang dinamis. </p>
+<p>Fitur Utama:</p>
+<ul>
+<li><strong>Manajemen Transaksi</strong>: Proses POS yang responsif, mengelompokkan kategori jasa, suku cadang, dan menghitung total harga secara otomatis.</li>
+<li><strong>Manajemen Pelanggan &amp; Kendaraan</strong>: Menyimpan data riwayat pelanggan dan kendaraan.</li>
+<li><strong>Manajemen Jasa &amp; Sparepart</strong>: Pencatatan layanan perbaikan dan stok barang.</li>
+<li><strong>Dashboard Interaktif</strong>: Ringkasan transaksi dan pendapatan.</li>
+</ul>
+<h2>2. Link Penting</h2>
+<ul>
+<li><strong>URL GitHub</strong>: <a href="https://github.com/baguskara1/uas-pemweb-praktikum">https://github.com/baguskara1/uas-pemweb-praktikum</a></li>
+<li><strong>URL Video Demo</strong>: <a href="https://drive.google.com/drive/folders/1HfNmJ8nKIyGhCtzyaTa4rFpT1Z0X4vZH?usp=sharing">Google Drive Link</a></li>
+</ul>
+<h2>3. Screenshot Fitur</h2>
+<h3>Halaman Login</h3>
+<p><img src="assets/screenshots/login.png" alt="Login"></p>
+<h3>Dashboard Utama</h3>
+<p><img src="assets/screenshots/dashboard.png" alt="Dashboard"></p>
+<h3>Transaksi Baru (POS)</h3>
+<p><img src="assets/screenshots/pos.png" alt="POS"></p>
+<h3>Data Pelanggan</h3>
+<p><img src="assets/screenshots/pelanggan.png" alt="Pelanggan"></p>
+<h2>4. Struktur Database (Schema)</h2>
+<p>Berikut adalah struktur database utama (ERD / Relasi Tabel):</p>
+<pre><code class="language-mermaid">erDiagram
+    USERS {
+        int id PK
+        varchar username
+        varchar password
+        varchar nama
+        enum role
+    }
+    PELANGGAN {
+        int id PK
+        varchar nama
+        varchar no_telp
+        text alamat
+    }
+    KENDARAAN {
+        int id PK
+        int id_pelanggan FK
+        varchar plat_no
+        varchar model
+    }
+    TRANSAKSI {
+        int id PK
+        varchar no_transaksi
+        int id_pelanggan FK
+        int id_kendaraan FK
+        decimal total
+        text catatan
+    }
+    TRANSAKSI_JASA {
+        int id PK
+        int id_transaksi FK
+        int id_varian_jasa FK
+    }
+    TRANSAKSI_SPAREPART {
+        int id PK
+        int id_transaksi FK
+        int id_sparepart FK
+        int qty
+        decimal harga
+    }
+
+    PELANGGAN ||--o{ KENDARAAN : &quot;memiliki&quot;
+    PELANGGAN ||--o{ TRANSAKSI : &quot;melakukan&quot;
+    KENDARAAN ||--o{ TRANSAKSI : &quot;diservis&quot;
+    TRANSAKSI ||--o{ TRANSAKSI_JASA : &quot;mencakup&quot;
+    TRANSAKSI ||--o{ TRANSAKSI_SPAREPART : &quot;membeli&quot;
+</code></pre>
+<p>Struktur ini mendukung pencatatan yang terintegrasi antara data master dan data transaksi harian bengkel.</p>
+

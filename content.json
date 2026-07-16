@@ -1,0 +1,418 @@
+[
+	{ "type": "h1", "text": "Ringkasan Eksekutif" },
+	{
+		"type": "body",
+		"text": "Dokumen ini menyajikan implementasi lengkap sistem Point of Sale (POS) untuk bengkel motor \"Bengkel Racing Cihuy\" yang dibangun sebagai proyek akhir (UAS) mata kuliah Pemrograman Web Praktikum. Sistem ini dibangun menggunakan native PHP dengan Tailwind CSS dan MySQL, mengikuti ketentuan tanpa menggunakan framework PHP."
+	},
+	{
+		"type": "callout",
+		"text": "Capaian utama: Sistem POS berfungsi penuh dengan manajemen transaksi, pelacakan inventaris, data pelanggan/kendaraan, katalog jasa/sparepart, laporan dengan ekspor Excel, dan antarmuka bergelap bertema racing."
+	},
+
+	{ "type": "h1", "text": "Gambaran Umum Proyek" },
+	{ "type": "h2", "text": "Identitas Proyek" },
+	{
+		"type": "table",
+		"headers": ["Atribut", "Detail"],
+		"rows": [
+			["Nama Proyek", "POS Bengkel Motor Racing (Bengkel Racing Cihuy)"],
+			["Mata Kuliah", "Pemrograman Web Praktikum — UAS"],
+			["Mahasiswa", "Rio Ardiyansyah"],
+			["NIM", "241110075"],
+			["Repository", "https://github.com/baguskara1/uas-pemweb-praktikum"],
+			[
+				"Google Drive (Screenshot & Video)",
+				"https://drive.google.com/drive/folders/1HfNmJ8nKIyGhCtzyaTa4rFpT1Z0X4vZH?usp=sharing"
+			],
+			["Server", "PHP 8.5.7 built-in server (php -S localhost:8080)"]
+		]
+	},
+
+	{ "type": "h2", "text": "Ketentuan & Kebutuhan Teknis" },
+	{
+		"type": "bullet",
+		"text": "Native PHP saja — tanpa Laravel, CodeIgniter, atau framework lain"
+	},
+	{ "type": "bullet", "text": "Tailwind CSS via CDN untuk styling" },
+	{ "type": "bullet", "text": "Database MySQL dengan 17 tabel" },
+	{
+		"type": "bullet",
+		"text": "Alpine.js untuk interaktivitas (diperbolehkan karena library ringan, bukan framework)"
+	},
+	{
+		"type": "bullet",
+		"text": "Library Composer: FPDF, phpdotenv, endroid/qr-code, PhpSpreadsheet"
+	},
+	{
+		"type": "bullet",
+		"text": "Tema gelap racing dengan palet warna merah-emas-oranye"
+	},
+	{
+		"type": "bullet",
+		"text": "Responsif mobile: sidebar drawer, tabel scroll horizontal"
+	},
+
+	{ "type": "h1", "text": "Desain Database (17 Tabel)" },
+	{
+		"type": "table",
+		"headers": ["Tabel", "Fungsi", "Relasi Kunci"],
+		"rows": [
+			["users", "Login admin", "id (PK)"],
+			["pelanggan", "Data pelanggan", "id (PK)"],
+			[
+				"kendaraan",
+				"Kendaraan pelanggan",
+				"id_pelanggan → pelanggan.id (ON DELETE CASCADE)"
+			],
+			["merek", "Merek motor", "id (PK)"],
+			["kategori_jasa", "Kategori jasa servis", "id (PK)"],
+			["jasa", "Daftar jasa servis", "id_kategori → kategori_jasa.id"],
+			["varian_jasa", "Varian jasa + breakdown", "id_jasa.id"],
+			[
+				"item_varian",
+				"Item default per varian",
+				"id_varian → varian_jasa.id, id_master_item → master_item.id"
+			],
+			["master_item", "Inventaris part (dengan foto)", "id (PK)"],
+			["kategori_sparepart", "Kategori sparepart", "id (PK)"],
+			[
+				"sparepart",
+				"Stok & harga sparepart",
+				"id_kategori → kategori_sparepart.id"
+			],
+			[
+				"transaksi",
+				"Header transaksi utama",
+				"id_pelanggan → pelanggan.id, id_kendaraan → kendaraan.id, id_user → users.id"
+			],
+			[
+				"detail_jasa",
+				"Item jasa per transaksi",
+				"id_transaksi → transaksi.id (ON DELETE CASCADE), id_varian → varian_jasa.id"
+			],
+			[
+				"detail_item_jasa",
+				"Breakdown item per jasa",
+				"id_detail_jasa → detail_jasa.id (ON DELETE CASCADE)"
+			],
+			[
+				"detail_sparepart",
+				"Item sparepart per transaksi",
+				"id_transaksi → transaksi.id (ON DELETE CASCADE), id_sparepart → sparepart.id"
+			],
+			[
+				"log_stok",
+				"Audit trail stok",
+				"id_master_item → master_item.id, id_sparepart → sparepart.id"
+			],
+			["pengaturan", "Pengaturan sistem (key-value)", "key (PK)"]
+		]
+	},
+
+	{ "type": "h2", "text": "Strategi Foreign Key" },
+	{ "type": "body", "text": "Keputusan FK penting saat pengembangan:" },
+	{
+		"type": "bullet",
+		"text": "kendaraan.id_pelanggan → pelanggan.id ON DELETE CASCADE (hapus pelanggan = hapus kendaraannya)"
+	},
+	{
+		"type": "bullet",
+		"text": "transaksi.id_pelanggan → pelanggan.id ON DELETE SET NULL (riwayat transaksi tetap aman)"
+	},
+	{
+		"type": "bullet",
+		"text": "transaksi.id_kendaraan → kendaraan.id ON DELETE SET NULL (riwayat transaksi tetap aman)"
+	},
+	{
+		"type": "bullet",
+		"text": "detail_jasa/sparepart.id_transaksi → transaksi.id ON DELETE CASCADE (hapus transaksi = hapus itemnya)"
+	},
+	{
+		"type": "bullet",
+		"text": "detail_item_jasa.id_detail_jasa → detail_jasa.id ON DELETE CASCADE"
+	},
+
+	{ "type": "h1", "text": "Fitur Utama yang Diimplementasikan" },
+	{ "type": "h2", "text": "1. Autentikasi & Sesi" },
+	{
+		"type": "bullet",
+		"text": "Satu user admin (username: admin, password: admin123)"
+	},
+	{
+		"type": "bullet",
+		"text": "Auth berbasis session dengan guard cek_login() di setiap halaman"
+	},
+	{
+		"type": "bullet",
+		"text": "Logout via /logout.php (path absolut biar work di semua halaman)"
+	},
+
+	{ "type": "h2", "text": "2. Dashboard (dashboard.php)" },
+	{
+		"type": "bullet",
+		"text": "Chart.js grafik garis — tren pendapatan 7 hari"
+	},
+	{
+		"type": "bullet",
+		"text": "Filter: Hari Ini / Bulan Ini / Bulan Lalu (GET params, tanpa reload)"
+	},
+	{
+		"type": "bullet",
+		"text": "Kartu statistik: Total Transaksi, Total Pendapatan, Total Pelanggan, Stok Rendah"
+	},
+
+	{
+		"type": "h2",
+		"text": "3. POS Transaksi Baru (transaksi/baru.php) — Fitur Inti"
+	},
+	{
+		"type": "bullet",
+		"text": "Pilih Pelanggan + Kendaraan (dropdown bergantung via AJAX)"
+	},
+	{ "type": "bullet", "text": "Tab Jasa & Sparepart" },
+	{
+		"type": "bullet",
+		"text": "Tab Jasa: cari nama, filter kategori (kategori_jasa)"
+	},
+	{ "type": "bullet", "text": "Tab Sparepart: cari + urutkan stok naik/turun" },
+	{
+		"type": "bullet",
+		"text": "Panel keranjang (kanan): breakdown item, edit qty/harga, item custom"
+	},
+	{
+		"type": "bullet",
+		"text": "Mobile: stack vertikal (max-h-[50vh] mobile, tanpa tinggi tetap desktop)"
+	},
+	{
+		"type": "bullet",
+		"text": "Simpan → simpan_transaksi() generate ID, cascade ke detail, log stok, kosongkan keranjang"
+	},
+
+	{ "type": "h2", "text": "4. Daftar & Detail Transaksi" },
+	{
+		"type": "bullet",
+		"text": "Pagination 20 item/halaman, cari pelanggan/kendaraan"
+	},
+	{
+		"type": "bullet",
+		"text": "View detail: breakdown lengkap (jasa + sparepart + item + sparepart)"
+	},
+	{
+		"type": "bullet",
+		"text": "Alur status: Antrian → Dikerjakan → Selesai → Lunas"
+	},
+
+	{
+		"type": "h2",
+		"text": "5. Nota PDF dengan QR Code (FPDF + endroid/qr-code v6)"
+	},
+	{
+		"type": "bullet",
+		"text": "Otomatis tergenerate saat simpan, disimpan ke folder /nota/ untuk arsip"
+	},
+	{
+		"type": "bullet",
+		"text": "QR code berisi link Google Form + ID transaksi untuk registrasi garansi"
+	},
+	{
+		"type": "bullet",
+		"text": "Integrasi WhatsApp via Fonnte (hanya teks karena batasan free plan)"
+	},
+
+	{ "type": "h2", "text": "6. Manajemen Data Master (CRUD)" },
+	{
+		"type": "bullet",
+		"text": "Pelanggan, Kendaraan, Jasa, Varian, Kategori, Merek, Master Item, Sparepart"
+	},
+	{
+		"type": "bullet",
+		"text": "Semua daftar: pencarian + pagination (20/halaman) + tabel responsif scroll"
+	},
+	{
+		"type": "bullet",
+		"text": "Master Item: upload foto (JPG/PNG/WebP, max 2MB, thumb 40×40 di tabel)"
+	},
+	{
+		"type": "bullet",
+		"text": "Varian Jasa: breakdown item (item_varian) dengan qty/harga default"
+	},
+	{
+		"type": "bullet",
+		"text": "Sparepart: toggle sort stok (klik header \"Stok\")"
+	},
+
+	{ "type": "h2", "text": "7. Riwayat Stok (log_stok)" },
+	{
+		"type": "bullet",
+		"text": "Otomatis tercatat setiap transaksi lewat catatLogStok()"
+	},
+	{
+		"type": "bullet",
+		"text": "Form penyesuaian manual (Masuk/Keluar + keterangan)"
+	},
+	{
+		"type": "bullet",
+		"text": "Audit trail lengkap: user, timestamp, qty sebelum/sesudah"
+	},
+
+	{ "type": "h2", "text": "8. Laporan Penghasilan (laporan/index.php)" },
+	{ "type": "bullet", "text": "Rincian harian per bulan yang dipilih" },
+	{ "type": "bullet", "text": "Chart.js batang: pendapatan harian" },
+	{
+		"type": "bullet",
+		"text": "Ekspor XLSX (PhpSpreadsheet) dengan format rupiah & total"
+	},
+
+	{
+		"type": "h2",
+		"text": "9. Pengaturan & Backup/Restore (pengaturan/index.php)"
+	},
+	{
+		"type": "bullet",
+		"text": "Pengaturan disimpan di tabel DB `pengaturan` (key-value)"
+	},
+	{
+		"type": "bullet",
+		"text": "Backup: generate dump SQL penuh via mysqldump (fallback PHP)"
+	},
+	{ "type": "bullet", "text": "Restore: eksekusi file .sql yang di-upload" },
+
+	{ "type": "h1", "text": "Keputusan Desain UI/UX" },
+	{ "type": "h2", "text": "Evolusi Palet Warna" },
+	{
+		"type": "table",
+		"headers": ["Versi", "Primary", "Secondary", "Accent/Warning", "Alasan"],
+		"rows": [
+			["Awal", "#e60000", "#ffd700", "#ff6600", "Merah racing murni"],
+			["Opsi 1", "#ccff00", "#000000", "#ff3366", "Eksperimen hijau limau"],
+			[
+				"Opsi 3",
+				"#ccff00",
+				"#ff00ff",
+				"#ffd700",
+				"Campuran limau-magenta-emas"
+			],
+			[
+				"Final (Opsi G)",
+				"#e60000",
+				"#ffd700",
+				"#ff6600",
+				"Merah racing + emas — konsisten brand"
+			]
+		]
+	},
+
+	{ "type": "h2", "text": "Perbaikan Responsif" },
+	{
+		"type": "bullet",
+		"text": "Sidebar: drawer off-canvas dengan hamburger toggle (Alpine.js x-data)"
+	},
+	{
+		"type": "bullet",
+		"text": "Tabel: wrapper .table-responsive dengan overflow-x-auto"
+	},
+	{
+		"type": "bullet",
+		"text": "Tab POS: flex-1 min-h-0 overflow-y-auto (dihapus batas max-h-96 mobile)"
+	},
+	{
+		"type": "bullet",
+		"text": "Viewport: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">"
+	},
+	{
+		"type": "bullet",
+		"text": "html { overflow-x: hidden } mencegah scroll horizontal di mobile"
+	},
+
+	{ "type": "h1", "text": "Integrasi Layanan Eksternal" },
+	{ "type": "h2", "text": "Notifikasi WhatsApp (Fonnte)" },
+	{ "type": "bullet", "text": "Token disimpan di .env (FONNTE_TOKEN)" },
+	{
+		"type": "bullet",
+		"text": "Batasan free plan: hanya kirim teks, tidak bisa kirim file"
+	},
+	{
+		"type": "bullet",
+		"text": "Implementasi: kirim ringkasan transaksi + link garansi"
+	},
+	{
+		"type": "bullet",
+		"text": "PDF tetap tergenerate & diarsipkan lokal walau WA gagal"
+	},
+
+	{ "type": "h2", "text": "Registrasi Garansi (Google Forms)" },
+	{
+		"type": "bullet",
+		"text": "URL pre-filled: LINK_GARANSI + entry.2014103664=TRX-XXXX"
+	},
+	{ "type": "bullet", "text": "QR code di PDF meng-encode URL ini" },
+
+	{ "type": "h1", "text": "Keterbatasan & Masalah Terkenal" },
+	{
+		"type": "bullet",
+		"text": "Fonnte device terkadang disconnected → WA gagal diam (di-flash)"
+	},
+	{
+		"type": "bullet",
+		"text": "Tidak ada lampiran file di WA (batasan free plan)"
+	},
+	{
+		"type": "bullet",
+		"text": "Tidak ada otomatisasi test — verifikasi manual"
+	},
+	{ "type": "bullet", "text": "Satu user admin (belum ada role-based access)" },
+	{
+		"type": "bullet",
+		"text": "Pengurangan stok saat simpan transaksi, bukan saat masuk keranjang"
+	},
+
+	{ "type": "h1", "text": "Checklist Deployment" },
+	{ "type": "bullet", "text": "composer install (folder vendor/)" },
+	{
+		"type": "bullet",
+		"text": "Import database/schema.sql → buat db_bengkel_racing"
+	},
+	{
+		"type": "bullet",
+		"text": "Konfigurasi .env dengan kredensial DB, token Fonnte, link Google Forms"
+	},
+	{ "type": "bullet", "text": "Jalankan: php -S localhost:8080 -t ." },
+	{ "type": "bullet", "text": "Login: admin / admin123" },
+	{
+		"type": "bullet",
+		"text": "Produksi: Apache/Nginx + PHP-FPM, HTTPS, amanin .env"
+	},
+
+	{ "type": "h1", "text": "Penutup" },
+	{
+		"type": "body",
+		"text": "Sistem POS Bengkel Racing Cihuy menunjukkan solusi manajemen bengkel lengkap yang siap pakai, dibangun sepenuhnya dengan native PHP. Semua kebutuhan UAS terpenuhi: pemrosesan transaksi dengan breakdown jasa/sparepart, pelacakan inventaris dengan log audit, pelaporan dengan grafik visual dan ekspor Excel, pembuatan nota PDF dengan QR code, integrasi WhatsApp, serta antarmuka bergelap bertema racing yang nyaman di desktop maupun mobile."
+	},
+	{
+		"type": "callout",
+		"text": "Repository: https://github.com/baguskara1/uas-pemweb-praktikum — berisi source code lengkap, schema.sql, PLAN.md, dan dump database."
+	},
+
+	{ "type": "pagebreak" },
+	{
+		"type": "bibliography",
+		"title": "Referensi & Teknologi",
+		"items": [
+			{ "id": "1", "text": "PHP 8.5 Documentation — php.net" },
+			{ "id": "2", "text": "Tailwind CSS 3.x — tailwindcss.com" },
+			{ "id": "3", "text": "Alpine.js v3 — alpinejs.dev" },
+			{ "id": "4", "text": "Chart.js 4.x — chartjs.org" },
+			{ "id": "5", "text": "FPDF — fpdf.org" },
+			{ "id": "6", "text": "endroid/qr-code v6 — github.com/endroid/qr-code" },
+			{
+				"id": "7",
+				"text": "PhpSpreadsheet — phpoffice.github.io/PhpSpreadsheet"
+			},
+			{ "id": "8", "text": "Fonnte WhatsApp API — fonnte.com" },
+			{
+				"id": "9",
+				"text": "MySQL 8.0 / MariaDB 10.4 — Foreign Key Constraints, ON DELETE CASCADE/SET NULL"
+			}
+		]
+	}
+]
