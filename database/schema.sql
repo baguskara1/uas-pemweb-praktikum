@@ -116,8 +116,8 @@ CREATE TABLE transaksi (
     total INT NOT NULL DEFAULT 0,
     status ENUM('antrian', 'dikerjakan', 'selesai', 'lunas') DEFAULT 'antrian',
     catatan TEXT,
-    FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id),
-    FOREIGN KEY (id_kendaraan) REFERENCES kendaraan(id),
+    FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id) ON DELETE SET NULL,
+    FOREIGN KEY (id_kendaraan) REFERENCES kendaraan(id) ON DELETE SET NULL,
     FOREIGN KEY (id_user) REFERENCES users(id)
 );
 

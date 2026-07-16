@@ -26,6 +26,26 @@ include '../../layout/sidebar.php';
     </header>
 
     <main class="flex-1 p-4 md:p-6 overflow-y-auto">
+        <?php if (isset($_SESSION['flash'])): ?>
+            <?php $flash = $_SESSION['flash']; unset($_SESSION['flash']); ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: '<?= $flash['type'] ?>',
+                        title: '<?= $flash['type'] === 'success' ? 'Berhasil' : 'Gagal' ?>',
+                        text: '<?= $flash['message'] ?>',
+                        timer: 3000,
+                        showConfirmButton: false,
+                        background: '#161622',
+                        color: '#fff',
+                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#e60000' ?>',
+                        toast: true,
+                        position: 'top-end'
+                    });
+                });
+            </script>
+        <?php endif; ?>
+
         <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 mb-6">
             <form method="GET" class="flex-1 max-w-md">
                 <div class="relative">

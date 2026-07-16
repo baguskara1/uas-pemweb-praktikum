@@ -63,6 +63,26 @@ include '../../layout/sidebar.php';
         </div>
     </header>
     <main class="flex-1 p-4 md:p-6 overflow-y-auto">
+        <?php if (isset($_SESSION['flash'])): ?>
+            <?php $flash = $_SESSION['flash']; unset($_SESSION['flash']); ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: '<?= $flash['type'] ?>',
+                        title: '<?= $flash['type'] === 'success' ? 'Berhasil' : 'Gagal' ?>',
+                        text: '<?= $flash['message'] ?>',
+                        timer: 3000,
+                        showConfirmButton: false,
+                        background: '#161622',
+                        color: '#fff',
+                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#e60000' ?>',
+                        toast: true,
+                        position: 'top-end'
+                    });
+                });
+            </script>
+        <?php endif; ?>
+
         <!-- Filter -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
             <div class="flex flex-wrap gap-2">
@@ -124,8 +144,13 @@ include '../../layout/sidebar.php';
                             </form>
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            <a href="detail.php?id=<?= $row['id'] ?>" class="text-blue-400 hover:text-blue-300">
+                            <a href="detail.php?id=<?= $row['id'] ?>" class="text-blue-400 hover:text-blue-300 mr-3">
                                 <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="hapus.php?id=<?= $row['id'] ?>"
+                                onclick="return confirm('Yakin ingin menghapus transaksi ini?')"
+                                class="text-red-400 hover:text-red-300">
+                                <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
                     </tr>
