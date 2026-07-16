@@ -47,9 +47,9 @@ include '../../layout/sidebar.php';
             <form method="GET" class="w-full sm:max-w-md">
                 <input type="text" name="search" placeholder="Cari item atau satuan..." 
                        value="<?= htmlspecialchars($search) ?>"
-                       class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]">
+                       class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]">
             </form>
-            <a href="tambah.php" class="w-full sm:w-auto text-center px-4 py-2.5 bg-[#ccff00] hover:bg-[#ff0066] text-white text-sm font-semibold rounded-xl transition-colors">
+            <a href="tambah.php" class="w-full sm:w-auto text-center px-4 py-2.5 bg-[#e60000] hover:bg-[#ffd700] text-white text-sm font-semibold rounded-xl transition-colors">
                 <i class="fas fa-plus mr-2"></i>Tambah Item
             </a>
         </div>
@@ -98,7 +98,7 @@ include '../../layout/sidebar.php';
                 <i class="fas fa-cube text-4xl text-gray-600 mb-4"></i>
                 <p class="text-gray-400 text-lg"><?= $search ? 'Item tidak ditemukan' : 'Belum ada data produk' ?></p>
                 <?php if (!$search): ?>
-                    <a href="tambah.php" class="inline-block mt-4 px-4 py-2.5 bg-[#ccff00] hover:bg-[#ff0066] text-white text-sm font-semibold rounded-xl transition-colors">
+                    <a href="tambah.php" class="inline-block mt-4 px-4 py-2.5 bg-[#e60000] hover:bg-[#ffd700] text-white text-sm font-semibold rounded-xl transition-colors">
                         <i class="fas fa-plus mr-2"></i>Tambah Item Pertama
                     </a>
                 <?php endif; ?>
@@ -110,13 +110,13 @@ include '../../layout/sidebar.php';
             <p class="text-sm text-gray-400">Menampilkan <?= $offset + 1 ?>-<?= min($offset + $limit, $total) ?> dari <?= $total ?></p>
             <div class="flex flex-wrap gap-2">
                 <?php if ($page > 1): ?>
-                    <a href="?page=<?= $page - 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#ccff00] transition-colors">« Prev</a>
+                    <a href="?page=<?= $page - 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#e60000] transition-colors">« Prev</a>
                 <?php endif; ?>
                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                    <a href="?page=<?= $i ?><?= $preserve_params ?>" class="px-4 py-2 rounded-xl text-sm transition-colors <?= $i == $page ? 'bg-[#ccff00] text-white' : 'bg-[#0a0a0f] border border-[#2a2a3a] text-gray-300 hover:text-white hover:border-[#ccff00]' ?>"><?= $i ?></a>
+                    <a href="?page=<?= $i ?><?= $preserve_params ?>" class="px-4 py-2 rounded-xl text-sm transition-colors <?= $i == $page ? 'bg-[#e60000] text-white' : 'bg-[#0a0a0f] border border-[#2a2a3a] text-gray-300 hover:text-white hover:border-[#e60000]' ?>"><?= $i ?></a>
                 <?php endfor; ?>
                 <?php if ($page < $total_pages): ?>
-                    <a href="?page=<?= $page + 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#ccff00] transition-colors">Next »</a>
+                    <a href="?page=<?= $page + 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#e60000] transition-colors">Next »</a>
                 <?php endif; ?>
             </div>
         </div>

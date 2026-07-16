@@ -10,7 +10,7 @@
 	border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-	background: #ccff00;
+	background: #e60000;
 }
 
 /* Transition global */
@@ -22,7 +22,7 @@
 
 /* Sidebar active indicator */
 .sidebar-active {
-	border-left: 2px solid #ccff00;
+	border-left: 2px solid #e60000;
 }
 
 /* Table styling */
@@ -32,22 +32,22 @@
 	letter-spacing: 0.05em;
 }
 .table-custom tr:hover {
-	background: rgba(204, 255, 0, 0.03);
+	background: rgba(230, 0, 0, 0.03);
 }
 
 /* Card hover */
 .card-hover:hover {
-	border-color: #ccff00;
+	border-color: #e60000;
 	transform: translateY(-2px);
-	box-shadow: 0 4px 20px rgba(204, 255, 0, 0.1);
+	box-shadow: 0 4px 20px rgba(230, 0, 0, 0.1);
 }
 
 /* Form focus */
 input:focus,
 select:focus,
 textarea:focus {
-	border-color: #ccff00 !important;
-	box-shadow: 0 0 0 1px rgba(204, 255, 0, 0.2) !important;
+	border-color: #e60000 !important;
+	box-shadow: 0 0 0 1px rgba(230, 0, 0, 0.2) !important;
 }
 
 /* Responsive table: horizontal scroll on mobile */

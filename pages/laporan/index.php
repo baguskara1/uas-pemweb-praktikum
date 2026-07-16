@@ -46,20 +46,20 @@ include '../../layout/sidebar.php';
     <header class="bg-[#0d0d1a] border-b border-[#2a2a3a] px-4 md:px-6 py-4 pl-16 md:pl-6">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <h2 class="text-xl font-bold text-white">
-                <i class="fas fa-chart-simple text-[#ccff00] mr-2"></i>Laporan Penghasilan
+                <i class="fas fa-chart-simple text-[#e60000] mr-2"></i>Laporan Penghasilan
             </h2>
             <form action="" method="GET" class="flex flex-wrap items-center gap-2 w-full sm:w-auto mt-2 sm:mt-0">
-                <select name="bulan" class="flex-1 min-w-[100px] px-3 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00]">
+                <select name="bulan" class="flex-1 min-w-[100px] px-3 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000]">
                     <?php for ($m = 1; $m <= 12; $m++): ?>
                     <option value="<?= str_pad($m, 2, '0', STR_PAD_LEFT) ?>" <?= $bulan == $m ? 'selected' : '' ?>><?= $nama_bulan[$m] ?></option>
                     <?php endfor; ?>
                 </select>
-                <select name="tahun" class="flex-1 min-w-[80px] px-3 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00]">
+                <select name="tahun" class="flex-1 min-w-[80px] px-3 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000]">
                     <?php for ($y = date('Y'); $y >= 2024; $y--): ?>
                     <option value="<?= $y ?>" <?= $tahun == $y ? 'selected' : '' ?>><?= $y ?></option>
                     <?php endfor; ?>
                 </select>
-                <button type="submit" class="flex-1 min-w-[100px] px-4 py-2 bg-[#ccff00] hover:bg-[#ff0066] text-white rounded-xl text-sm transition-colors">
+                <button type="submit" class="flex-1 min-w-[100px] px-4 py-2 bg-[#e60000] hover:bg-[#ffd700] text-white rounded-xl text-sm transition-colors">
                     <i class="fas fa-filter mr-1"></i>Tampilkan
                 </button>
                 <a href="?export=xlsx&bulan=<?= $bulan ?>&tahun=<?= $tahun ?>"
@@ -118,8 +118,8 @@ include '../../layout/sidebar.php';
                         <p class="text-gray-400 text-xs uppercase tracking-wider">Sparepart Terjual</p>
                         <p class="text-2xl font-bold text-white mt-1"><?= $sparepart_terjual ?> pcs</p>
                     </div>
-                    <div class="w-12 h-12 rounded-lg bg-[#ffd700]/10 flex items-center justify-center">
-                        <i class="fas fa-oil-can text-[#ffd700] text-xl"></i>
+                    <div class="w-12 h-12 rounded-lg bg-[#ff6600]/10 flex items-center justify-center">
+                        <i class="fas fa-oil-can text-[#ff6600] text-xl"></i>
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@ include '../../layout/sidebar.php';
                         <?php while ($t = $transaksi->fetch_assoc()): ?>
                         <tr class="hover:bg-[#0a0a0f] transition-colors">
                             <td class="px-4 py-3 text-sm font-mono text-white">
-                                <a href="../transaksi/detail.php?id=<?= $t['id'] ?>" class="hover:text-[#ccff00]">
+                                <a href="../transaksi/detail.php?id=<?= $t['id'] ?>" class="hover:text-[#e60000]">
                                     #TRX-<?= str_pad($t['id'], 4, '0', STR_PAD_LEFT) ?>
                                 </a>
                             </td>
@@ -165,7 +165,7 @@ include '../../layout/sidebar.php';
                             <td class="px-4 py-3 text-sm text-gray-300"><?= htmlspecialchars($t['nama_pelanggan'] ?? '-') ?></td>
                             <td class="px-4 py-3 text-sm text-gray-300 font-mono"><?= htmlspecialchars($t['plat_no'] ?? '-') ?></td>
                             <td class="px-4 py-3 text-sm text-center">
-                                <?php $bc = ['antrian'=>'text-[#ffd700]','dikerjakan'=>'text-yellow-400','selesai'=>'text-blue-400','lunas'=>'text-green-400']; ?>
+                                <?php $bc = ['antrian'=>'text-[#ff6600]','dikerjakan'=>'text-yellow-400','selesai'=>'text-blue-400','lunas'=>'text-green-400']; ?>
                                 <span class="<?= $bc[$t['status']] ?? 'text-gray-400' ?> font-medium uppercase"><?= $t['status'] ?></span>
                             </td>
                             <td class="px-4 py-3 text-sm text-right text-green-400 font-semibold">Rp <?= number_format($t['total'], 0, ',', '.') ?></td>
@@ -195,8 +195,8 @@ new Chart(ctx, {
         datasets: [{
             label: 'Pendapatan',
             data: <?= json_encode($chart_data) ?>,
-            backgroundColor: 'rgba(255, 0, 102, 0.6)',
-            borderColor: '#ff0066',
+            backgroundColor: 'rgba(255, 215, 0, 0.6)',
+            borderColor: '#ffd700',
             borderWidth: 1,
             borderRadius: 4,
         }]

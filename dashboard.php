@@ -65,12 +65,12 @@ include 'layout/sidebar.php';
     <header class="bg-[#0d0d1a] border-b border-[#2a2a3a] px-4 md:px-6 py-4 pl-16 md:pl-6">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <h2 class="text-xl font-bold text-white">
-                <i class="fas fa-gauge-high text-[#ccff00] mr-2"></i>Dashboard
+                <i class="fas fa-gauge-high text-[#e60000] mr-2"></i>Dashboard
             </h2>
             <div class="flex items-center gap-3">
                 <form action="" method="GET" class="flex items-center gap-2">
                     <select name="filter" onchange="this.form.submit()"
-                        class="px-3 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00] cursor-pointer">
+                        class="px-3 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000] cursor-pointer">
                         <option value="hari_ini" <?= $filter_mode === 'hari_ini' ? 'selected' : '' ?>>Hari Ini</option>
                         <option value="bulan_ini" <?= $filter_mode === 'bulan_ini' ? 'selected' : '' ?>>Bulan Ini</option>
                         <option value="bulan_lalu" <?= $filter_mode === 'bulan_lalu' ? 'selected' : '' ?>>Bulan Lalu</option>
@@ -116,8 +116,8 @@ include 'layout/sidebar.php';
                         <p class="text-gray-400 text-xs uppercase tracking-wider">Antrian</p>
                         <p class="text-2xl font-bold text-white mt-1"><?= $antrian ?></p>
                     </div>
-                    <div class="w-12 h-12 rounded-lg bg-[#ffd700]/10 flex items-center justify-center">
-                        <i class="fas fa-clock text-[#ffd700] text-xl"></i>
+                    <div class="w-12 h-12 rounded-lg bg-[#ff6600]/10 flex items-center justify-center">
+                        <i class="fas fa-clock text-[#ff6600] text-xl"></i>
                     </div>
                 </div>
             </div>
@@ -128,8 +128,8 @@ include 'layout/sidebar.php';
                         <p class="text-gray-400 text-xs uppercase tracking-wider">Stok Menipis</p>
                         <p class="text-2xl font-bold text-white mt-1"><?= $stok_menipis ?></p>
                     </div>
-                    <div class="w-12 h-12 rounded-lg bg-[#ffd700]/10 flex items-center justify-center">
-                        <i class="fas fa-exclamation-triangle text-[#ffd700] text-xl"></i>
+                    <div class="w-12 h-12 rounded-lg bg-[#ff6600]/10 flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-[#ff6600] text-xl"></i>
                     </div>
                 </div>
             </div>
@@ -152,12 +152,12 @@ new Chart(ctx, {
         datasets: [{
             label: 'Pendapatan',
             data: <?= json_encode($chart_data) ?>,
-            borderColor: '#ccff00',
-            backgroundColor: 'rgba(204, 255, 0, 0.1)',
+            borderColor: '#e60000',
+            backgroundColor: 'rgba(230, 0, 0, 0.1)',
             borderWidth: 2,
             fill: true,
             tension: 0.4,
-            pointBackgroundColor: '#ff0066',
+            pointBackgroundColor: '#ffd700',
             pointBorderColor: '#fff',
             pointBorderWidth: 2,
             pointRadius: 4

@@ -47,12 +47,12 @@ include '../../layout/sidebar.php';
                     <div>
                         <label class="block text-gray-300 text-sm font-medium mb-2">Nama Merek</label>
                         <input type="text" name="nama" required
-                            class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                            class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                             value="<?= htmlspecialchars($data['nama']) ?>">
                     </div>
                     <div class="flex gap-3">
                         <button type="submit"
-                            class="px-6 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+                            class="px-6 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                             <i class="fas fa-save mr-2"></i>Update
                         </button>
                         <a href="index.php"

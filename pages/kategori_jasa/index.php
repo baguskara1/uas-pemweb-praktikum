@@ -22,11 +22,11 @@ include '../../layout/sidebar.php';
                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     <input type="text" name="search" value="<?= htmlspecialchars($search) ?>"
                         placeholder="Cari kategori..."
-                        class="w-full px-4 py-2.5 pl-10 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]">
+                        class="w-full px-4 py-2.5 pl-10 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]">
                 </div>
             </form>
             <a href="tambah.php"
-                class="w-full sm:w-auto text-center px-4 py-2.5 bg-[#ccff00] hover:bg-[#ff0066] text-white text-sm font-semibold rounded-xl transition-colors">
+                class="w-full sm:w-auto text-center px-4 py-2.5 bg-[#e60000] hover:bg-[#ffd700] text-white text-sm font-semibold rounded-xl transition-colors">
                 <i class="fas fa-plus mr-2"></i>Tambah Kategori
             </a>
         </div>
@@ -62,7 +62,7 @@ include '../../layout/sidebar.php';
                         <td class="px-4 py-3 text-sm text-gray-400"><?= $no++ ?></td>
                         <td class="px-4 py-3 text-sm text-white font-medium"><?= htmlspecialchars($row['nama']) ?></td>
                         <td class="px-4 py-3 text-sm text-gray-300">
-                            <i class="fas <?= htmlspecialchars($row['icon'] ?? 'fa-wrench') ?> text-[#ccff00]"></i>
+                            <i class="fas <?= htmlspecialchars($row['icon'] ?? 'fa-wrench') ?> text-[#e60000]"></i>
                             <?= htmlspecialchars($row['icon'] ?? '-') ?>
                         </td>
                         <td class="px-4 py-3 text-sm">

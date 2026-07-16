@@ -59,17 +59,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div>
                     <label class="block text-gray-300 text-sm font-medium mb-2">Username</label>
                     <input type="text" name="username" required
-                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00] transition-colors"
+                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000] transition-colors"
                         placeholder="Masukkan username">
                 </div>
                 <div>
                     <label class="block text-gray-300 text-sm font-medium mb-2">Password</label>
                     <input type="password" name="password" required
-                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00] transition-colors"
+                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000] transition-colors"
                         placeholder="Masukkan password">
                 </div>
                 <button type="submit"
-                    class="w-full py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors duration-200">
+                    class="w-full py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors duration-200">
                     <i class="fas fa-sign-in-alt mr-2"></i>Login
                 </button>
             </form>

@@ -15,7 +15,7 @@ if ($related['total'] > 0) {
             icon: 'error',
             title: 'Tidak Dapat Dihapus',
             text: 'Jasa ini masih memiliki " . $related['total'] . " varian jasa. Hapus semua varian terlebih dahulu.',
-            confirmButtonColor: '#ccff00'
+            confirmButtonColor: '#e60000'
         }).then(() => { window.location = 'index.php'; });
     </script>";
     exit;
@@ -33,7 +33,7 @@ if ($stmt->execute()) {
             icon: 'error',
             title: 'Gagal',
             text: 'Gagal menghapus data: " . addslashes($conn->error) . "',
-            confirmButtonColor: '#ccff00'
+            confirmButtonColor: '#e60000'
         }).then(() => { window.location = 'index.php'; });
     </script>";
 }

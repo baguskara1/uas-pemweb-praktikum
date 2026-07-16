@@ -242,7 +242,7 @@ include '../../layout/sidebar.php';
     <header class="bg-[#0d0d1a] border-b border-[#2a2a3a] px-4 md:px-6 py-4 pl-16 md:pl-6">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <h2 class="text-xl font-bold text-white">
-                <i class="fas fa-cart-plus text-[#ccff00] mr-2"></i>POS Baru
+                <i class="fas fa-cart-plus text-[#e60000] mr-2"></i>POS Baru
             </h2>
             <div class="flex items-center gap-3">
                 <span class="text-gray-400 text-sm"><?= date('d F Y H:i') ?></span>
@@ -280,7 +280,7 @@ include '../../layout/sidebar.php';
                             }
                         }" @click.away="open = false" class="relative">
                             <button @click="open = !open" type="button"
-                                class="w-full flex items-center justify-between px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm hover:border-[#ccff00]/50 transition-colors">
+                                class="w-full flex items-center justify-between px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm hover:border-[#e60000]/50 transition-colors">
                                 <span class="truncate" :class="selectedId ? 'text-white' : 'text-gray-500'" x-text="selectedText"></span>
                                 <i class="fas fa-chevron-down text-gray-500 text-xs ml-2 transition-transform" :class="open && 'rotate-180'"></i>
                             </button>
@@ -290,14 +290,14 @@ include '../../layout/sidebar.php';
                                     <div class="relative">
                                         <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs"></i>
                                         <input x-model="search" type="text" placeholder="Cari nama / no telp..."
-                                            class="w-full px-3 py-2 pl-8 bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg text-white text-xs placeholder-gray-500 focus:outline-none focus:border-[#ccff00]">
+                                            class="w-full px-3 py-2 pl-8 bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg text-white text-xs placeholder-gray-500 focus:outline-none focus:border-[#e60000]">
                                     </div>
                                 </div>
                                 <div class="max-h-52 overflow-y-auto">
                                     <template x-for="opt in filteredOptions" :key="opt.id">
                                         <button @click="pilih(opt)" type="button"
-                                            class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#ccff00]/10 transition-colors border-b border-[#2a2a3a]/50 last:border-0"
-                                            :class="selectedId === opt.id ? 'bg-[#ccff00]/10 text-[#ccff00]' : 'text-gray-300 hover:text-white'">
+                                            class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#e60000]/10 transition-colors border-b border-[#2a2a3a]/50 last:border-0"
+                                            :class="selectedId === opt.id ? 'bg-[#e60000]/10 text-[#e60000]' : 'text-gray-300 hover:text-white'">
                                             <div class="flex items-center justify-between">
                                                 <span x-text="opt.text" class="font-medium"></span>
                                                 <span x-text="opt.subtext" class="text-gray-500 text-xs"></span>
@@ -337,7 +337,7 @@ include '../../layout/sidebar.php';
                             }
                         }" @click.away="open = false" class="relative">
                             <button @click="open = !open" type="button"
-                                class="w-full flex items-center justify-between px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm hover:border-[#ccff00]/50 transition-colors"
+                                class="w-full flex items-center justify-between px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm hover:border-[#e60000]/50 transition-colors"
                                 :class="!<?= $selected_pelanggan ?> ? 'opacity-50 cursor-not-allowed' : ''">
                                 <span class="truncate" :class="selectedId ? 'text-white' : 'text-gray-500'" x-text="selectedText"></span>
                                 <i class="fas fa-chevron-down text-gray-500 text-xs ml-2 transition-transform" :class="open && 'rotate-180'"></i>
@@ -349,14 +349,14 @@ include '../../layout/sidebar.php';
                                     <div class="relative">
                                         <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs"></i>
                                         <input x-model="search" type="text" placeholder="Cari kendaraan..."
-                                            class="w-full px-3 py-2 pl-8 bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg text-white text-xs placeholder-gray-500 focus:outline-none focus:border-[#ccff00]">
+                                            class="w-full px-3 py-2 pl-8 bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg text-white text-xs placeholder-gray-500 focus:outline-none focus:border-[#e60000]">
                                     </div>
                                 </div>
                                 <div class="max-h-52 overflow-y-auto">
                                     <template x-for="opt in filteredOptions" :key="opt.id">
                                         <button @click="pilih(opt)" type="button"
-                                            class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#ccff00]/10 transition-colors border-b border-[#2a2a3a]/50 last:border-0"
-                                            :class="selectedId === opt.id ? 'bg-[#ccff00]/10 text-[#ccff00]' : 'text-gray-300 hover:text-white'">
+                                            class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#e60000]/10 transition-colors border-b border-[#2a2a3a]/50 last:border-0"
+                                            :class="selectedId === opt.id ? 'bg-[#e60000]/10 text-[#e60000]' : 'text-gray-300 hover:text-white'">
                                             <div class="flex items-center justify-between">
                                                 <span x-text="opt.text" class="font-medium"></span>
                                                 <span x-text="opt.subtext" class="text-gray-500 text-xs font-mono"></span>
@@ -384,10 +384,10 @@ include '../../layout/sidebar.php';
             <!-- Tab Navigation -->
             <div class="bg-[#161622] rounded-xl border border-[#2a2a3a] overflow-hidden flex flex-col flex-1 min-h-0">
                 <div class="flex border-b border-[#2a2a3a]">
-                    <button @click="activeTab = 'jasa'" :class="activeTab === 'jasa' ? 'bg-[#ccff00]/10 text-[#ccff00] border-b-2 border-[#ccff00]' : 'text-gray-400 hover:text-white'" class="px-6 py-3 text-sm font-medium transition-colors">
+                    <button @click="activeTab = 'jasa'" :class="activeTab === 'jasa' ? 'bg-[#e60000]/10 text-[#e60000] border-b-2 border-[#e60000]' : 'text-gray-400 hover:text-white'" class="px-6 py-3 text-sm font-medium transition-colors">
                         <i class="fas fa-wrench mr-2"></i>Jasa
                     </button>
-                    <button @click="activeTab = 'sparepart'" :class="activeTab === 'sparepart' ? 'bg-[#ccff00]/10 text-[#ccff00] border-b-2 border-[#ccff00]' : 'text-gray-400 hover:text-white'" class="px-6 py-3 text-sm font-medium transition-colors">
+                    <button @click="activeTab = 'sparepart'" :class="activeTab === 'sparepart' ? 'bg-[#e60000]/10 text-[#e60000] border-b-2 border-[#e60000]' : 'text-gray-400 hover:text-white'" class="px-6 py-3 text-sm font-medium transition-colors">
                         <i class="fas fa-oil-can mr-2"></i>Sparepart
                     </button>
                 </div>
@@ -398,10 +398,10 @@ include '../../layout/sidebar.php';
                         <div class="relative flex-1">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
                             <input type="text" x-model="searchJasa" placeholder="Cari jasa..."
-                                class="w-full px-4 py-2 pl-8 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[#ccff00]">
+                                class="w-full px-4 py-2 pl-8 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[#e60000]">
                         </div>
                         <select x-model="selectedKategori"
-                            class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00] appearance-none cursor-pointer">
+                            class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000] appearance-none cursor-pointer">
                             <option value="0">Semua Kategori</option>
                             <?php foreach ($kategori_data as $k): ?>
                             <option value="<?= $k['id'] ?>"><?= htmlspecialchars($k['text']) ?></option>
@@ -423,11 +423,11 @@ include '../../layout/sidebar.php';
                                 $current_kategori = $j['kategori'];
                         ?>
                         <div class="text-xs uppercase tracking-wider text-gray-500 mt-3 mb-1 flex items-center gap-2">
-                            <i class="fas <?= $j['icon'] ?? 'fa-wrench' ?> text-[#ccff00]"></i>
+                            <i class="fas <?= $j['icon'] ?? 'fa-wrench' ?> text-[#e60000]"></i>
                             <?= htmlspecialchars($current_kategori) ?>
                         </div>
                         <?php endif; ?>
-                        <div class="flex items-center justify-between px-4 py-2.5 bg-[#0a0a0f] rounded-xl border border-[#2a2a3a] hover:border-[#ccff00]/30 transition-colors"
+                        <div class="flex items-center justify-between px-4 py-2.5 bg-[#0a0a0f] rounded-xl border border-[#2a2a3a] hover:border-[#e60000]/30 transition-colors"
                             x-show="(selectedKategori === 0 || selectedKategori === <?= $j['id_kategori'] ?>) && (searchJasa === '' || '<?= strtolower($j['nama_varian'] ?: $j['nama_jasa']) ?>'.includes(searchJasa.toLowerCase()))">
                             <div>
                                 <p class="text-white text-sm font-medium"><?= htmlspecialchars($j['nama_varian'] ?: $j['nama_jasa']) ?></p>
@@ -435,7 +435,7 @@ include '../../layout/sidebar.php';
                                     <?= htmlspecialchars($j['kategori']) ?> —
                                     <span class="text-green-400"><?= format_rupiah($j['total_harga']) ?></span>
                                     <?php if ($j['is_custom']): ?>
-                                    <span class="text-[#ffd700]">(Custom)</span>
+                                    <span class="text-[#ff6600]">(Custom)</span>
                                     <?php endif; ?>
                                 </p>
                             </div>
@@ -445,7 +445,7 @@ include '../../layout/sidebar.php';
                                 <input type="hidden" name="pelanggan_id" value="<?= $_GET['pelanggan_id'] ?? 0 ?>">
                                 <input type="hidden" name="kendaraan_id" value="<?= $_GET['kendaraan_id'] ?? 0 ?>">
                                 <button type="submit"
-                                    class="px-3 py-1.5 bg-[#ccff00] hover:bg-[#ff0066] text-white text-xs font-semibold rounded-lg transition-colors">
+                                    class="px-3 py-1.5 bg-[#e60000] hover:bg-[#ffd700] text-white text-xs font-semibold rounded-lg transition-colors">
                                     <i class="fas fa-plus mr-1"></i>Tambah
                                 </button>
                             </form>
@@ -460,7 +460,7 @@ include '../../layout/sidebar.php';
                         <div class="relative flex-1">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
                             <input type="text" x-model="searchSparepart" placeholder="Cari sparepart..."
-                                class="w-full px-4 py-2 pl-8 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[#ccff00]">
+                                class="w-full px-4 py-2 pl-8 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[#e60000]">
                         </div>
                         <?php
                         $sort_sparepart = $_GET['sort_sparepart'] ?? '';
@@ -471,7 +471,7 @@ include '../../layout/sidebar.php';
                         ?>
                         <span class="text-gray-500 text-xs whitespace-nowrap">Urut:</span>
                         <a href="<?= $url_base ?>?sort_sparepart=<?= $sort_sparepart === 'stok_asc' ? 'stok_desc' : 'stok_asc' ?>&pelanggan_id=<?= $_GET['pelanggan_id'] ?? 0 ?>&kendaraan_id=<?= $_GET['kendaraan_id'] ?? 0 ?>"
-                            class="text-xs font-medium px-3 py-2 rounded-xl border transition-colors <?= $sort_sparepart ? 'bg-[#ccff00]/10 text-[#ccff00] border-[#ccff00]/30' : 'bg-[#0a0a0f] text-gray-400 border-[#2a2a3a] hover:text-white' ?>">
+                            class="text-xs font-medium px-3 py-2 rounded-xl border transition-colors <?= $sort_sparepart ? 'bg-[#e60000]/10 text-[#e60000] border-[#e60000]/30' : 'bg-[#0a0a0f] text-gray-400 border-[#2a2a3a] hover:text-white' ?>">
                             Stok <?php if ($sort_sparepart === 'stok_asc'): ?>↑<?php elseif ($sort_sparepart === 'stok_desc'): ?>↓<?php endif; ?>
                         </a>
                     </div>
@@ -480,7 +480,7 @@ include '../../layout/sidebar.php';
                         $spareparts = $conn->query("SELECT s.*, k.nama AS kategori FROM sparepart s JOIN kategori_sparepart k ON s.id_kategori = k.id WHERE s.stok > 0 ORDER BY $order_clause");
                         while ($s = $spareparts->fetch_assoc()):
                         ?>
-                        <div class="flex items-center justify-between px-4 py-2.5 bg-[#0a0a0f] rounded-xl border border-[#2a2a3a] hover:border-[#ccff00]/30 transition-colors"
+                        <div class="flex items-center justify-between px-4 py-2.5 bg-[#0a0a0f] rounded-xl border border-[#2a2a3a] hover:border-[#e60000]/30 transition-colors"
                             x-show="searchSparepart === '' || '<?= strtolower($s['nama'] . ' ' . ($s['kode'] ?? '')) ?>'.includes(searchSparepart.toLowerCase())">
                             <div>
                                 <p class="text-white text-sm font-medium"><?= htmlspecialchars($s['nama']) ?></p>
@@ -495,9 +495,9 @@ include '../../layout/sidebar.php';
                                 <input type="hidden" name="pelanggan_id" value="<?= $_GET['pelanggan_id'] ?? 0 ?>">
                                 <input type="hidden" name="kendaraan_id" value="<?= $_GET['kendaraan_id'] ?? 0 ?>">
                                 <input type="number" name="qty" value="1" min="1" max="<?= $s['stok'] ?>"
-                                    class="w-16 px-2 py-1.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg text-white text-xs text-center focus:outline-none focus:border-[#ccff00]">
+                                    class="w-16 px-2 py-1.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-lg text-white text-xs text-center focus:outline-none focus:border-[#e60000]">
                                 <button type="submit"
-                                    class="px-3 py-1.5 bg-[#ccff00] hover:bg-[#ff0066] text-white text-xs font-semibold rounded-lg transition-colors">
+                                    class="px-3 py-1.5 bg-[#e60000] hover:bg-[#ffd700] text-white text-xs font-semibold rounded-lg transition-colors">
                                     <i class="fas fa-plus mr-1"></i>
                                 </button>
                             </form>
@@ -513,7 +513,7 @@ include '../../layout/sidebar.php';
             <div class="bg-[#161622] rounded-xl border border-[#2a2a3a] flex flex-col flex-1">
                 <div class="px-5 py-4 border-b border-[#2a2a3a] flex justify-between items-center">
                     <h3 class="text-white font-semibold">
-                        <i class="fas fa-shopping-cart text-[#ccff00] mr-2"></i>Keranjang
+                        <i class="fas fa-shopping-cart text-[#e60000] mr-2"></i>Keranjang
                     </h3>
                     <form method="POST">
                         <input type="hidden" name="action" value="clear_cart">
@@ -639,9 +639,9 @@ include '../../layout/sidebar.php';
                         <input type="hidden" name="pelanggan_id" value="<?= $_GET['pelanggan_id'] ?? 0 ?>">
                         <input type="hidden" name="kendaraan_id" value="<?= $_GET['kendaraan_id'] ?? 0 ?>">
                         <input type="text" name="catatan" placeholder="Catatan (opsional)"
-                            class="w-full px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm placeholder-gray-500 mb-3 focus:outline-none focus:border-[#ccff00]">
+                            class="w-full px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm placeholder-gray-500 mb-3 focus:outline-none focus:border-[#e60000]">
                         <button type="submit"
-                            class="w-full py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors text-sm"
+                            class="w-full py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors text-sm"
                             onclick="return confirm('Simpan transaksi ini?')">
                             <i class="fas fa-save mr-2"></i>Simpan Transaksi
                         </button>

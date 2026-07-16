@@ -28,7 +28,7 @@ include '../../layout/sidebar.php';
     <header class="bg-[#0d0d1a] border-b border-[#2a2a3a] px-4 md:px-6 py-4 pl-16 md:pl-6">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <h2 class="text-xl font-bold text-white">
-                <i class="fas fa-history text-[#ccff00] mr-2"></i>Riwayat Stok
+                <i class="fas fa-history text-[#e60000] mr-2"></i>Riwayat Stok
             </h2>
             <div class="flex items-center gap-3">
                 <a href="index.php" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl text-sm transition-colors">
@@ -118,13 +118,13 @@ include '../../layout/sidebar.php';
                     <p class="text-sm text-gray-400">Menampilkan <?= $offset + 1 ?>-<?= min($offset + $limit, $total) ?> dari <?= $total ?></p>
                     <div class="flex flex-wrap gap-2">
                         <?php if ($page > 1): ?>
-                        <a href="?id=<?= $id_sparepart ?>&page=<?= $page - 1 ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#ccff00] transition-colors">« Prev</a>
+                        <a href="?id=<?= $id_sparepart ?>&page=<?= $page - 1 ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#e60000] transition-colors">« Prev</a>
                         <?php endif; ?>
                         <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                        <a href="?id=<?= $id_sparepart ?>&page=<?= $i ?>" class="px-4 py-2 rounded-xl text-sm transition-colors <?= $i == $page ? 'bg-[#ccff00] text-white' : 'bg-[#0a0a0f] border border-[#2a2a3a] text-gray-300 hover:text-white hover:border-[#ccff00]' ?>"><?= $i ?></a>
+                        <a href="?id=<?= $id_sparepart ?>&page=<?= $i ?>" class="px-4 py-2 rounded-xl text-sm transition-colors <?= $i == $page ? 'bg-[#e60000] text-white' : 'bg-[#0a0a0f] border border-[#2a2a3a] text-gray-300 hover:text-white hover:border-[#e60000]' ?>"><?= $i ?></a>
                         <?php endfor; ?>
                         <?php if ($page < $total_pages): ?>
-                        <a href="?id=<?= $id_sparepart ?>&page=<?= $page + 1 ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#ccff00] transition-colors">Next »</a>
+                        <a href="?id=<?= $id_sparepart ?>&page=<?= $page + 1 ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#e60000] transition-colors">Next »</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -138,7 +138,7 @@ include '../../layout/sidebar.php';
                     <input type="hidden" name="id_sparepart" value="<?= $id_sparepart ?>">
                     <div class="flex-1">
                         <label class="block text-gray-400 text-xs mb-1">Tipe</label>
-                        <select name="tipe" class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00]">
+                        <select name="tipe" class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000]">
                             <option value="masuk">Stok Masuk</option>
                             <option value="keluar">Stok Keluar</option>
                             <option value="penyesuaian">Penyesuaian (+/-)</option>
@@ -147,15 +147,15 @@ include '../../layout/sidebar.php';
                     <div class="w-24">
                         <label class="block text-gray-400 text-xs mb-1">Jumlah</label>
                         <input type="number" name="qty" value="1" min="1" required
-                            class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm text-center focus:outline-none focus:border-[#ccff00]">
+                            class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm text-center focus:outline-none focus:border-[#e60000]">
                     </div>
                     <div class="flex-1">
                         <label class="block text-gray-400 text-xs mb-1">Catatan</label>
                         <input type="text" name="catatan" placeholder="Mis: Pembelian dari supplier"
-                            class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00]">
+                            class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000]">
                     </div>
                     <button type="submit"
-                        class="px-5 py-2.5 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors whitespace-nowrap">
+                        class="px-5 py-2.5 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors whitespace-nowrap">
                         <i class="fas fa-check mr-1"></i>Simpan
                     </button>
                 </form>

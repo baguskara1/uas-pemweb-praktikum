@@ -2,7 +2,7 @@
 $base = (strpos($_SERVER['PHP_SELF'], '/pages/') !== false) ? '../../' : '';
 $menu = [
     ['label' => 'Dashboard', 'icon' => 'fa-gauge-high', 'link' => $base . 'dashboard.php'],
-    ['label' => 'POS Baru', 'icon' => 'fa-cart-plus', 'link' => $base . 'pages/transaksi/baru.php', 'color' => 'text-[#ccff00]'],
+    ['label' => 'POS Baru', 'icon' => 'fa-cart-plus', 'link' => $base . 'pages/transaksi/baru.php', 'color' => 'text-[#e60000]'],
     ['label' => 'Transaksi', 'icon' => 'fa-receipt', 'link' => $base . 'pages/transaksi/index.php'],
     ['label' => 'Laporan', 'icon' => 'fa-chart-simple', 'link' => $base . 'pages/laporan/index.php'],
     [],
@@ -26,7 +26,7 @@ $current_path = $_SERVER['PHP_SELF'];
 <button @click="sidebarOpen = true"
         x-show="!sidebarOpen"
         x-cloak
-        class="fixed top-4 left-4 z-50 md:hidden flex items-center justify-center w-10 h-10 bg-[#ccff00] rounded-xl text-white shadow-lg hover:bg-[#ff0066] transition-colors"
+        class="fixed top-4 left-4 z-50 md:hidden flex items-center justify-center w-10 h-10 bg-[#e60000] rounded-xl text-white shadow-lg hover:bg-[#ffd700] transition-colors"
         aria-label="Buka menu navigasi">
     <i class="fas fa-bars"></i>
 </button>
@@ -43,7 +43,7 @@ $current_path = $_SERVER['PHP_SELF'];
        :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
     <div class="p-5 border-b border-[#2a2a3a] flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-[#ccff00] flex items-center justify-center overflow-hidden">
+            <div class="w-10 h-10 rounded-full bg-[#e60000] flex items-center justify-center overflow-hidden">
                 <img src="<?= $base ?>assets/img/logo.png" alt="Racing Cihuy" class="w-10 h-10 object-cover">
             </div>
             <div>
@@ -70,7 +70,7 @@ $current_path = $_SERVER['PHP_SELF'];
                 <a href="<?= $item['link'] ?>"
                     class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-colors duration-200
                     <?= $is_active
-                        ? 'bg-[#ccff00]/10 text-[#ccff00] border-l-2 border-[#ccff00]'
+                        ? 'bg-[#e60000]/10 text-[#e60000] border-l-2 border-[#e60000]'
                         : 'text-gray-400 hover:text-white hover:bg-white/5' ?>">
                     <i class="fas <?= $item['icon'] ?> w-5 text-center <?= $item['color'] ?? '' ?>"></i>
                     <span><?= $item['label'] ?></span>
@@ -81,8 +81,8 @@ $current_path = $_SERVER['PHP_SELF'];
 
     <div class="p-4 border-t border-[#2a2a3a]">
         <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 rounded-full bg-[#ccff00]/20 flex items-center justify-center">
-                <i class="fas fa-user text-[#ccff00] text-xs"></i>
+            <div class="w-8 h-8 rounded-full bg-[#e60000]/20 flex items-center justify-center">
+                <i class="fas fa-user text-[#e60000] text-xs"></i>
             </div>
             <div class="flex-1 min-w-0">
                 <p class="text-white text-sm font-medium truncate"><?= $_SESSION['nama'] ?? 'User' ?></p>

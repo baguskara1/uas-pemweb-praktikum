@@ -78,7 +78,7 @@ include '../../layout/sidebar.php';
                         <p class="text-gray-500 text-xs uppercase tracking-wider">Status</p>
                         <?php
                         $badge_colors = [
-                            'antrian' => 'bg-[#ffd700]/10 text-[#ffd700]',
+                            'antrian' => 'bg-[#ff6600]/10 text-[#ff6600]',
                             'dikerjakan' => 'bg-yellow-500/10 text-yellow-400',
                             'selesai' => 'bg-blue-500/10 text-blue-400',
                             'lunas' => 'bg-green-500/10 text-green-400',
@@ -96,7 +96,7 @@ include '../../layout/sidebar.php';
 
             <!-- Pelanggan & Kendaraan -->
             <div class="bg-[#161622] rounded-2xl p-6 border border-[#2a2a3a]">
-                <h3 class="text-white font-semibold mb-4"><i class="fas fa-user mr-2 text-[#ccff00]"></i>Data Pelanggan</h3>
+                <h3 class="text-white font-semibold mb-4"><i class="fas fa-user mr-2 text-[#e60000]"></i>Data Pelanggan</h3>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <p class="text-gray-500 text-xs">Nama</p>
@@ -119,7 +119,7 @@ include '../../layout/sidebar.php';
 
             <!-- Detail Jasa -->
             <div class="bg-[#161622] rounded-2xl p-6 border border-[#2a2a3a]">
-                <h3 class="text-white font-semibold mb-4"><i class="fas fa-wrench mr-2 text-[#ccff00]"></i>Jasa Servis</h3>
+                <h3 class="text-white font-semibold mb-4"><i class="fas fa-wrench mr-2 text-[#e60000]"></i>Jasa Servis</h3>
                 <div class="space-y-3">
                     <?php while ($dj = $detail_jasa->fetch_assoc()):
                         // Get items for this jasa
@@ -148,7 +148,7 @@ include '../../layout/sidebar.php';
             <!-- Detail Sparepart -->
             <?php if ($detail_sparepart->num_rows > 0): ?>
             <div class="bg-[#161622] rounded-2xl p-6 border border-[#2a2a3a]">
-                <h3 class="text-white font-semibold mb-4"><i class="fas fa-oil-can mr-2 text-[#ccff00]"></i>Sparepart</h3>
+                <h3 class="text-white font-semibold mb-4"><i class="fas fa-oil-can mr-2 text-[#e60000]"></i>Sparepart</h3>
                 <div class="space-y-2">
                     <?php while ($ds = $detail_sparepart->fetch_assoc()): ?>
                     <div class="flex justify-between items-center bg-[#0a0a0f] rounded-xl px-4 py-3 border border-[#2a2a3a]">
@@ -249,7 +249,7 @@ include '../../layout/sidebar.php';
                         text: ' . $reason . ' + ". Kirim manual?",
                         background: "#161622",
                         color: "#fff",
-                        iconColor: "#ccff00",
+                        iconColor: "#e60000",
                         showCancelButton: true,
                         confirmButtonColor: "#22c55e",
                         cancelButtonColor: "#6b7280",

@@ -50,7 +50,7 @@ include '../../layout/sidebar.php';
                         <label class="block text-gray-300 text-sm font-medium mb-2">Nama Item</label>
                         <input type="text" name="nama_item" required
                                value="<?= htmlspecialchars($nama_item) ?>"
-                               class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                               class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                placeholder="Masukkan nama item">
                     </div>
 
@@ -58,13 +58,13 @@ include '../../layout/sidebar.php';
                         <label class="block text-gray-300 text-sm font-medium mb-2">Satuan</label>
                         <input type="text" name="satuan" required
                                value="<?= htmlspecialchars($satuan) ?>"
-                               class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                               class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                placeholder="Contoh: pcs, liter, box">
                         <p class="text-gray-500 text-xs mt-1.5">Default: pcs</p>
                     </div>
 
                     <div class="flex items-center gap-3">
-                        <button type="submit" class="px-6 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+                        <button type="submit" class="px-6 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                             <i class="fas fa-save mr-2"></i>Simpan
                         </button>
                         <a href="index.php" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl text-sm transition-colors">

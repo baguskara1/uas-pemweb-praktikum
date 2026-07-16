@@ -112,7 +112,7 @@ $items = $conn->query("
             <div>
                 <h2 class="text-xl font-bold text-white">Kelola Item Varian</h2>
                 <p class="text-gray-400 text-sm mt-1">
-                    <a href="index.php" class="text-[#ccff00] hover:underline">Varian Jasa</a>
+                    <a href="index.php" class="text-[#e60000] hover:underline">Varian Jasa</a>
                     <i class="fas fa-chevron-right text-xs mx-2 text-gray-600"></i>
                     <?= htmlspecialchars($varian_data['nama_varian'] ?: $varian_data['nama_jasa'] . ' - ' . $varian_data['nama_merek']) ?>
                 </p>
@@ -136,7 +136,7 @@ $items = $conn->query("
                         showConfirmButton: false,
                         background: '#161622',
                         color: '#fff',
-                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#ccff00' ?>',
+                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#e60000' ?>',
                         toast: true,
                         position: 'top-end'
                     });
@@ -166,7 +166,7 @@ $items = $conn->query("
             </div>
             <?php if ($varian_data['is_custom']): ?>
                 <div class="mt-3">
-                    <span class="inline-flex items-center gap-1 px-3 py-1 bg-[#ffd700]/20 text-[#ffd700] rounded-lg text-xs font-medium">
+                    <span class="inline-flex items-center gap-1 px-3 py-1 bg-[#ff6600]/20 text-[#ff6600] rounded-lg text-xs font-medium">
                         <i class="fas fa-pen"></i> Varian Custom — item dapat diedit saat transaksi
                     </span>
                 </div>
@@ -185,9 +185,9 @@ $items = $conn->query("
                         <input type="hidden" name="action" value="tambah">
 
                         <div class="mb-4">
-                            <label for="id_master_item" class="block text-gray-300 text-sm font-medium mb-2">Master Item <span class="text-[#ccff00]">*</span></label>
+                            <label for="id_master_item" class="block text-gray-300 text-sm font-medium mb-2">Master Item <span class="text-[#e60000]">*</span></label>
                             <select id="id_master_item" name="id_master_item" required
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#ccff00]">
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#e60000]">
                                 <option value="">-- Pilih Item --</option>
                                 <?php while ($mi = $master_item->fetch_assoc()): ?>
                                     <option value="<?= $mi['id'] ?>">
@@ -201,18 +201,18 @@ $items = $conn->query("
                             <div>
                                 <label for="qty_default" class="block text-gray-300 text-sm font-medium mb-2">Qty Default</label>
                                 <input type="number" id="qty_default" name="qty_default" min="1" value="1"
-                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#ccff00]">
+                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#e60000]">
                             </div>
                             <div>
                                 <label for="harga_default" class="block text-gray-300 text-sm font-medium mb-2">Harga (Rp)</label>
                                 <input type="text" id="harga_default" name="harga_default"
-                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00] input-rupiah"
+                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000] input-rupiah"
                                     placeholder="0">
                             </div>
                         </div>
 
                         <button type="submit"
-                            class="w-full px-4 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+                            class="w-full px-4 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                             <i class="fas fa-plus mr-2"></i>Tambah Item
                         </button>
                     </form>
@@ -324,19 +324,19 @@ $items = $conn->query("
                 <div>
                     <label for="edit_qty_default" class="block text-gray-300 text-sm font-medium mb-2">Qty Default</label>
                     <input type="number" id="edit_qty_default" name="qty_default" min="1"
-                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#ccff00]">
+                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#e60000]">
                 </div>
                 <div>
                     <label for="edit_harga_default" class="block text-gray-300 text-sm font-medium mb-2">Harga Default (Rp)</label>
                     <input type="text" id="edit_harga_default" name="harga_default"
-                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00] input-rupiah"
+                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000] input-rupiah"
                         placeholder="0">
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
                 <button type="submit"
-                    class="flex-1 px-4 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+                    class="flex-1 px-4 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                     <i class="fas fa-save mr-2"></i>Simpan Perubahan
                 </button>
                 <button type="button" id="cancelEdit"
@@ -415,13 +415,13 @@ $items = $conn->query("
             text: `Yakin ingin menghapus item "${namaItem}" dari varian ini?`,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#ccff00',
+            confirmButtonColor: '#e60000',
             cancelButtonColor: '#6b7280',
             confirmButtonText: 'Ya, Hapus',
             cancelButtonText: 'Batal',
             background: '#161622',
             color: '#fff',
-            iconColor: '#ccff00',
+            iconColor: '#e60000',
             reverseButtons: true
         }).then(result => {
             if (result.isConfirmed) {

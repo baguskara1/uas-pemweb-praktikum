@@ -53,7 +53,7 @@ include '../../layout/sidebar.php';
     <header class="bg-[#0d0d1a] border-b border-[#2a2a3a] px-4 md:px-6 py-4 pl-16 md:pl-6">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <h2 class="text-xl font-bold text-white">
-                <i class="fas fa-cog text-[#ccff00] mr-2"></i>Pengaturan
+                <i class="fas fa-cog text-[#e60000] mr-2"></i>Pengaturan
             </h2>
         </div>
     </header>
@@ -63,7 +63,7 @@ include '../../layout/sidebar.php';
         <?php $flash = $_SESSION['flash']; unset($_SESSION['flash']); ?>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({ icon: '<?= $flash['type'] ?>', title: '<?= $flash['message'] ?>', timer: 3000, showConfirmButton: false, background: '#161622', color: '#fff', iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#ccff00' ?>', toast: true, position: 'top-end' });
+            Swal.fire({ icon: '<?= $flash['type'] ?>', title: '<?= $flash['message'] ?>', timer: 3000, showConfirmButton: false, background: '#161622', color: '#fff', iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#e60000' ?>', toast: true, position: 'top-end' });
         });
         </script>
         <?php endif; ?>
@@ -77,7 +77,7 @@ include '../../layout/sidebar.php';
                 <div>
                     <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                         <?php $icons = ['umum' => 'fa-building', 'nota' => 'fa-file-pdf', 'wa' => 'fa-whatsapp', 'garansi' => 'fa-shield', 'sistem' => 'fa-gear']; ?>
-                        <i class="fas <?= $icons[$grup_key] ?? 'fa-cog' ?> text-[#ccff00]"></i>
+                        <i class="fas <?= $icons[$grup_key] ?? 'fa-cog' ?> text-[#e60000]"></i>
                         <?= $grup_label ?>
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -88,20 +88,20 @@ include '../../layout/sidebar.php';
                             </label>
                             <?php if (in_array($s['kunci'], ['alamat', 'nota_footer'])): ?>
                             <textarea name="<?= $s['kunci'] ?>" rows="2"
-                                class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00]"><?= htmlspecialchars($s['nilai']) ?></textarea>
+                                class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000]"><?= htmlspecialchars($s['nilai']) ?></textarea>
                             <?php elseif ($s['kunci'] === 'timezone'): ?>
                             <select name="<?= $s['kunci'] ?>"
-                                class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00]">
+                                class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000]">
                                 <option value="Asia/Jakarta" <?= $s['nilai'] === 'Asia/Jakarta' ? 'selected' : '' ?>>WIB (Asia/Jakarta)</option>
                                 <option value="Asia/Makassar" <?= $s['nilai'] === 'Asia/Makassar' ? 'selected' : '' ?>>WITA (Asia/Makassar)</option>
                                 <option value="Asia/Jayapura" <?= $s['nilai'] === 'Asia/Jayapura' ? 'selected' : '' ?>>WIT (Asia/Jayapura)</option>
                             </select>
                             <?php elseif ($s['kunci'] === 'fonnte_token'): ?>
                             <input type="password" name="<?= $s['kunci'] ?>" value="<?= htmlspecialchars($s['nilai']) ?>"
-                                class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00]" placeholder="Token API Fonnte">
+                                class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000]" placeholder="Token API Fonnte">
                             <?php else: ?>
                             <input type="text" name="<?= $s['kunci'] ?>" value="<?= htmlspecialchars($s['nilai']) ?>"
-                                class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#ccff00]">
+                                class="w-full px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm focus:outline-none focus:border-[#e60000]">
                             <?php endif; ?>
                         </div>
                         <?php endforeach; ?>
@@ -110,7 +110,7 @@ include '../../layout/sidebar.php';
                 <?php endforeach; ?>
 
                 <button type="submit" name="simpan_settings" value="1"
-                    class="px-6 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+                    class="px-6 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                     <i class="fas fa-save mr-2"></i>Simpan Pengaturan
                 </button>
             </form>
@@ -118,7 +118,7 @@ include '../../layout/sidebar.php';
             <!-- Backup & Restore -->
             <div class="bg-[#161622] rounded-2xl p-8 border border-[#2a2a3a]">
                 <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                    <i class="fas fa-database text-[#ccff00]"></i>Backup & Restore Database
+                    <i class="fas fa-database text-[#e60000]"></i>Backup & Restore Database
                 </h3>
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
                     <form method="POST">
@@ -129,7 +129,7 @@ include '../../layout/sidebar.php';
                     </form>
                     <form method="POST" enctype="multipart/form-data" class="flex flex-col sm:flex-row gap-2">
                         <input type="file" name="file_sql" accept=".sql" required
-                            class="flex-1 w-full min-w-0 px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-medium file:bg-[#ccff00] file:text-white hover:file:bg-red-600 cursor-pointer">
+                            class="flex-1 w-full min-w-0 px-4 py-2.5 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white text-sm file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-medium file:bg-[#e60000] file:text-white hover:file:bg-red-600 cursor-pointer">
                         <button type="submit" name="restore" value="1"
                             class="px-4 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-colors text-sm whitespace-nowrap shrink-0"
                             onclick="return confirm('Yakin restore database? Data yang ada akan dihapus dan diganti!')">

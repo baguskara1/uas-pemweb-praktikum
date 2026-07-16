@@ -71,9 +71,9 @@ include '../../layout/sidebar.php';
                 <form method="POST">
                     <div class="space-y-6">
                         <div>
-                            <label for="id_pelanggan" class="block text-gray-300 text-sm font-medium mb-2">Pemilik <span class="text-[#ccff00]">*</span></label>
+                            <label for="id_pelanggan" class="block text-gray-300 text-sm font-medium mb-2">Pemilik <span class="text-[#e60000]">*</span></label>
                             <select id="id_pelanggan" name="id_pelanggan"
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                 required>
                                 <option value="" class="bg-[#161622]">-- Pilih Pelanggan --</option>
                                 <?php while ($p = $pelanggan->fetch_assoc()): ?>
@@ -86,9 +86,9 @@ include '../../layout/sidebar.php';
                         </div>
 
                         <div>
-                            <label for="id_merek" class="block text-gray-300 text-sm font-medium mb-2">Merek <span class="text-[#ccff00]">*</span></label>
+                            <label for="id_merek" class="block text-gray-300 text-sm font-medium mb-2">Merek <span class="text-[#e60000]">*</span></label>
                             <select id="id_merek" name="id_merek"
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                 required>
                                 <option value="" class="bg-[#161622]">-- Pilih Merek --</option>
                                 <?php while ($m = $merek->fetch_assoc()): ?>
@@ -101,16 +101,16 @@ include '../../layout/sidebar.php';
                         </div>
 
                         <div>
-                            <label for="plat_no" class="block text-gray-300 text-sm font-medium mb-2">Plat Nomor <span class="text-[#ccff00]">*</span></label>
+                            <label for="plat_no" class="block text-gray-300 text-sm font-medium mb-2">Plat Nomor <span class="text-[#e60000]">*</span></label>
                             <input type="text" id="plat_no" name="plat_no" value="<?= htmlspecialchars($_POST['plat_no'] ?? $kendaraan['plat_no']) ?>"
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                 placeholder="Contoh: B 1234 ABC" required>
                         </div>
 
                         <div>
                             <label for="model" class="block text-gray-300 text-sm font-medium mb-2">Model</label>
                             <input type="text" id="model" name="model" value="<?= htmlspecialchars($_POST['model'] ?? $kendaraan['model']) ?>"
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                 placeholder="Contoh: CBR 150R, NMAX, Satria F">
                         </div>
 
@@ -118,14 +118,14 @@ include '../../layout/sidebar.php';
                             <div>
                                 <label for="cc" class="block text-gray-300 text-sm font-medium mb-2">CC</label>
                                 <input type="number" id="cc" name="cc" value="<?= htmlspecialchars($_POST['cc'] ?? $kendaraan['cc']) ?>"
-                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                     placeholder="Contoh: 150">
                             </div>
 
                             <div>
                                 <label for="tahun" class="block text-gray-300 text-sm font-medium mb-2">Tahun</label>
                                 <select id="tahun" name="tahun"
-                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]">
+                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]">
                                     <option value="" class="bg-[#161622]">-- Pilih Tahun --</option>
                                     <?php for ($th = date('Y'); $th >= 2000; $th--): ?>
                                         <option value="<?= $th ?>" class="bg-[#161622]"
@@ -140,7 +140,7 @@ include '../../layout/sidebar.php';
 
                     <div class="flex items-center gap-3 mt-8">
                         <button type="submit"
-                            class="px-6 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+                            class="px-6 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                             <i class="fas fa-save mr-2"></i>Simpan Perubahan
                         </button>
                         <a href="index.php"

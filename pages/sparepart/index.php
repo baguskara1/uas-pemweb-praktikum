@@ -73,7 +73,7 @@ if (!empty($_GET)) {
     <header class="bg-[#0d0d1a] border-b border-[#2a2a3a] px-4 md:px-6 py-4 pl-16 md:pl-6">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <h2 class="text-xl font-bold text-white">Data Sparepart</h2>
-            <a href="tambah.php" class="w-full sm:w-auto text-center px-6 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+            <a href="tambah.php" class="w-full sm:w-auto text-center px-6 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                 <i class="fas fa-plus mr-2"></i>Tambah Sparepart
             </a>
         </div>
@@ -92,7 +92,7 @@ if (!empty($_GET)) {
                         showConfirmButton: false,
                         background: '#161622',
                         color: '#fff',
-                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#ccff00' ?>',
+                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#e60000' ?>',
                         toast: true,
                         position: 'top-end'
                     });
@@ -107,10 +107,10 @@ if (!empty($_GET)) {
                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     <input type="text" name="search" value="<?= htmlspecialchars($search) ?>"
                         placeholder="Cari sparepart (nama atau kode)..."
-                        class="w-full pl-10 pr-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]">
+                        class="w-full pl-10 pr-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]">
                 </div>
                 <button type="submit"
-                    class="px-5 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white rounded-xl transition-colors">
+                    class="px-5 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white rounded-xl transition-colors">
                     <i class="fas fa-search"></i>
                 </button>
                 <?php if (!empty($search)): ?>
@@ -133,7 +133,7 @@ if (!empty($_GET)) {
                         <th class="px-4 py-3 text-center text-xs font-medium text-gray-400 uppercase tracking-wider">Foto</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Kategori</th>
                         <th class="px-4 py-3 text-center text-xs font-medium text-gray-400 uppercase tracking-wider cursor-pointer hover:text-white transition-colors" onclick="var u=new (window.URL||URL)(location.href),s=u.searchParams.get('sort_stok');u.searchParams.set('sort_stok',s==='asc'?'desc':'asc');location.href=u.toString()">
-                            Stok <?php if ($sort_stok === 'asc'): ?><span class="text-[#ccff00] ml-1">↑</span><?php elseif ($sort_stok === 'desc'): ?><span class="text-[#ccff00] ml-1">↓</span><?php endif; ?>
+                            Stok <?php if ($sort_stok === 'asc'): ?><span class="text-[#e60000] ml-1">↑</span><?php elseif ($sort_stok === 'desc'): ?><span class="text-[#e60000] ml-1">↓</span><?php endif; ?>
                         </th>
                         <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Harga Beli</th>
                         <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Harga Jual</th>
@@ -202,10 +202,10 @@ if (!empty($_GET)) {
                                 <i class="fas fa-oil-can text-3xl mb-3 block text-gray-600"></i>
                                 <?php if (!empty($search)): ?>
                                     Tidak ada sparepart yang cocok dengan "<strong><?= htmlspecialchars($search) ?></strong>". <br>
-                                    <a href="index.php" class="text-[#ccff00] hover:underline">Reset pencarian</a>
+                                    <a href="index.php" class="text-[#e60000] hover:underline">Reset pencarian</a>
                                 <?php else: ?>
                                     Belum ada data sparepart. <br>
-                                    <a href="tambah.php" class="text-[#ccff00] hover:underline">Tambah sparepart sekarang</a>
+                                    <a href="tambah.php" class="text-[#e60000] hover:underline">Tambah sparepart sekarang</a>
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -220,13 +220,13 @@ if (!empty($_GET)) {
             <p class="text-sm text-gray-400">Menampilkan <?= $offset + 1 ?>-<?= min($offset + $limit, $total) ?> dari <?= $total ?></p>
             <div class="flex flex-wrap gap-2">
                 <?php if ($page > 1): ?>
-                    <a href="?page=<?= $page - 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#ccff00] transition-colors">« Prev</a>
+                    <a href="?page=<?= $page - 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#e60000] transition-colors">« Prev</a>
                 <?php endif; ?>
                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                    <a href="?page=<?= $i ?><?= $preserve_params ?>" class="px-4 py-2 rounded-xl text-sm transition-colors <?= $i == $page ? 'bg-[#ccff00] text-white' : 'bg-[#0a0a0f] border border-[#2a2a3a] text-gray-300 hover:text-white hover:border-[#ccff00]' ?>"><?= $i ?></a>
+                    <a href="?page=<?= $i ?><?= $preserve_params ?>" class="px-4 py-2 rounded-xl text-sm transition-colors <?= $i == $page ? 'bg-[#e60000] text-white' : 'bg-[#0a0a0f] border border-[#2a2a3a] text-gray-300 hover:text-white hover:border-[#e60000]' ?>"><?= $i ?></a>
                 <?php endfor; ?>
                 <?php if ($page < $total_pages): ?>
-                    <a href="?page=<?= $page + 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#ccff00] transition-colors">Next »</a>
+                    <a href="?page=<?= $page + 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#e60000] transition-colors">Next »</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -245,13 +245,13 @@ if (!empty($_GET)) {
                 text: `Yakin ingin menghapus sparepart "${nama}"?`,
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#ccff00',
+                confirmButtonColor: '#e60000',
                 cancelButtonColor: '#6b7280',
                 confirmButtonText: 'Ya, Hapus',
                 cancelButtonText: 'Batal',
                 background: '#161622',
                 color: '#fff',
-                iconColor: '#ccff00',
+                iconColor: '#e60000',
                 reverseButtons: true
             }).then(result => {
                 if (result.isConfirmed) {

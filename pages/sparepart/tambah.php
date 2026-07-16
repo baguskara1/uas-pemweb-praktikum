@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         showConfirmButton: false,
                         background: '#161622',
                         color: '#fff',
-                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#ccff00' ?>',
+                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#e60000' ?>',
                         toast: true,
                         position: 'top-end'
                     });
@@ -124,9 +124,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Kategori -->
                         <div class="md:col-span-2">
-                            <label for="id_kategori" class="block text-gray-300 text-sm font-medium mb-2">Kategori <span class="text-[#ccff00]">*</span></label>
+                            <label for="id_kategori" class="block text-gray-300 text-sm font-medium mb-2">Kategori <span class="text-[#e60000]">*</span></label>
                             <select id="id_kategori" name="id_kategori" required
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#ccff00]">
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#e60000]">
                                 <option value="">-- Pilih Kategori --</option>
                                 <?php while ($kat = $kategori->fetch_assoc()): ?>
                                     <option value="<?= $kat['id'] ?>" <?= ($_POST['id_kategori'] ?? '') == $kat['id'] ? 'selected' : '' ?>>
@@ -140,16 +140,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div>
                             <label for="kode" class="block text-gray-300 text-sm font-medium mb-2">Kode Sparepart</label>
                             <input type="text" id="kode" name="kode"
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                 placeholder="Mis: OLI-001"
                                 value="<?= htmlspecialchars($_POST['kode'] ?? '') ?>">
                         </div>
 
                         <!-- Nama -->
                         <div>
-                            <label for="nama" class="block text-gray-300 text-sm font-medium mb-2">Nama Sparepart <span class="text-[#ccff00]">*</span></label>
+                            <label for="nama" class="block text-gray-300 text-sm font-medium mb-2">Nama Sparepart <span class="text-[#e60000]">*</span></label>
                             <input type="text" id="nama" name="nama" required
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                 placeholder="Nama sparepart"
                                 value="<?= htmlspecialchars($_POST['nama'] ?? '') ?>">
                         </div>
@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div>
                             <label for="stok" class="block text-gray-300 text-sm font-medium mb-2">Stok</label>
                             <input type="number" id="stok" name="stok" min="0"
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00]"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000]"
                                 placeholder="0"
                                 value="<?= htmlspecialchars($_POST['stok'] ?? 0) ?>">
                         </div>
@@ -167,16 +167,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div>
                             <label for="harga_beli" class="block text-gray-300 text-sm font-medium mb-2">Harga Beli (Rp)</label>
                             <input type="text" id="harga_beli" name="harga_beli"
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00] input-rupiah"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000] input-rupiah"
                                 placeholder="0"
                                 value="<?= isset($_POST['harga_beli']) ? number_format((int)$_POST['harga_beli'], 0, ',', '.') : '' ?>">
                         </div>
 
                         <!-- Harga Jual -->
                         <div>
-                            <label for="harga_jual" class="block text-gray-300 text-sm font-medium mb-2">Harga Jual (Rp) <span class="text-[#ccff00]">*</span></label>
+                            <label for="harga_jual" class="block text-gray-300 text-sm font-medium mb-2">Harga Jual (Rp) <span class="text-[#e60000]">*</span></label>
                             <input type="text" id="harga_jual" name="harga_jual" required
-                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ccff00] input-rupiah"
+                                class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e60000] input-rupiah"
                                 placeholder="0"
                                 value="<?= isset($_POST['harga_jual']) ? number_format((int)$_POST['harga_jual'], 0, ',', '.') : '' ?>">
                         </div>
@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <label class="block text-gray-300 text-sm font-medium mb-2">Foto Sparepart</label>
                             <div class="relative">
                                 <input type="file" name="gambar" accept="image/jpeg,image/png,image/webp"
-                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-[#ccff00] file:text-white hover:file:bg-red-600 cursor-pointer">
+                                    class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-[#e60000] file:text-white hover:file:bg-red-600 cursor-pointer">
                             </div>
                             <p class="text-gray-500 text-xs mt-1">Format: JPG, PNG, WebP. Maks 2MB</p>
                         </div>
@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="flex items-center gap-3 mt-8">
                         <button type="submit"
-                            class="px-6 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+                            class="px-6 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                             <i class="fas fa-save mr-2"></i>Simpan
                         </button>
                         <a href="index.php"

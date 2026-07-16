@@ -49,7 +49,7 @@ if (!empty($_GET)) {
     <header class="bg-[#0d0d1a] border-b border-[#2a2a3a] px-4 md:px-6 py-4 pl-16 md:pl-6">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <h2 class="text-xl font-bold text-white">Data Varian Jasa</h2>
-            <a href="tambah.php" class="w-full sm:w-auto text-center px-6 py-3 bg-[#ccff00] hover:bg-[#ff0066] text-white font-semibold rounded-xl transition-colors">
+            <a href="tambah.php" class="w-full sm:w-auto text-center px-6 py-3 bg-[#e60000] hover:bg-[#ffd700] text-white font-semibold rounded-xl transition-colors">
                 <i class="fas fa-plus mr-2"></i>Tambah Varian
             </a>
         </div>
@@ -68,7 +68,7 @@ if (!empty($_GET)) {
                         showConfirmButton: false,
                         background: '#161622',
                         color: '#fff',
-                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#ccff00' ?>',
+                        iconColor: '<?= $flash['type'] === 'success' ? '#22c55e' : '#e60000' ?>',
                         toast: true,
                         position: 'top-end'
                     });
@@ -82,7 +82,7 @@ if (!empty($_GET)) {
                 <div class="w-full sm:max-w-xs">
                     <label for="id_jasa" class="block text-gray-400 text-xs font-medium mb-1.5">Filter Berdasarkan Jasa</label>
                     <select id="id_jasa" name="id_jasa"
-                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#ccff00]"
+                        class="w-full px-4 py-3 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-white focus:outline-none focus:border-[#e60000]"
                         onchange="this.form.submit()">
                         <option value="">-- Semua Jasa --</option>
                         <?php while ($j = $daftar_jasa->fetch_assoc()): ?>
@@ -135,7 +135,7 @@ if (!empty($_GET)) {
                             </td>
                             <td class="px-4 py-3 text-sm text-center">
                                 <?php if ($row['is_custom']): ?>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#ffd700]/20 text-[#ffd700] rounded-lg text-xs font-medium">
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#ff6600]/20 text-[#ff6600] rounded-lg text-xs font-medium">
                                         <i class="fas fa-pen"></i> Custom
                                     </span>
                                 <?php else: ?>
@@ -170,10 +170,10 @@ if (!empty($_GET)) {
                                 <i class="fas fa-list text-3xl mb-3 block text-gray-600"></i>
                                 <?php if ($filter_jasa > 0): ?>
                                     Tidak ada varian untuk jasa yang dipilih. <br>
-                                    <a href="index.php" class="text-[#ccff00] hover:underline">Tampilkan semua varian</a>
+                                    <a href="index.php" class="text-[#e60000] hover:underline">Tampilkan semua varian</a>
                                 <?php else: ?>
                                     Belum ada data varian jasa. <br>
-                                    <a href="tambah.php" class="text-[#ccff00] hover:underline">Tambah varian sekarang</a>
+                                    <a href="tambah.php" class="text-[#e60000] hover:underline">Tambah varian sekarang</a>
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -188,13 +188,13 @@ if (!empty($_GET)) {
             <p class="text-sm text-gray-400">Menampilkan <?= $offset + 1 ?>-<?= min($offset + $limit, $total) ?> dari <?= $total ?></p>
             <div class="flex flex-wrap gap-2">
                 <?php if ($page > 1): ?>
-                    <a href="?page=<?= $page - 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#ccff00] transition-colors">« Prev</a>
+                    <a href="?page=<?= $page - 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#e60000] transition-colors">« Prev</a>
                 <?php endif; ?>
                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                    <a href="?page=<?= $i ?><?= $preserve_params ?>" class="px-4 py-2 rounded-xl text-sm transition-colors <?= $i == $page ? 'bg-[#ccff00] text-white' : 'bg-[#0a0a0f] border border-[#2a2a3a] text-gray-300 hover:text-white hover:border-[#ccff00]' ?>"><?= $i ?></a>
+                    <a href="?page=<?= $i ?><?= $preserve_params ?>" class="px-4 py-2 rounded-xl text-sm transition-colors <?= $i == $page ? 'bg-[#e60000] text-white' : 'bg-[#0a0a0f] border border-[#2a2a3a] text-gray-300 hover:text-white hover:border-[#e60000]' ?>"><?= $i ?></a>
                 <?php endfor; ?>
                 <?php if ($page < $total_pages): ?>
-                    <a href="?page=<?= $page + 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#ccff00] transition-colors">Next »</a>
+                    <a href="?page=<?= $page + 1 ?><?= $preserve_params ?>" class="px-4 py-2 bg-[#0a0a0f] border border-[#2a2a3a] rounded-xl text-sm text-gray-300 hover:text-white hover:border-[#e60000] transition-colors">Next »</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -213,13 +213,13 @@ if (!empty($_GET)) {
                 text: `Yakin ingin menghapus varian "${nama}"?`,
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#ccff00',
+                confirmButtonColor: '#e60000',
                 cancelButtonColor: '#6b7280',
                 confirmButtonText: 'Ya, Hapus',
                 cancelButtonText: 'Batal',
                 background: '#161622',
                 color: '#fff',
-                iconColor: '#ccff00',
+                iconColor: '#e60000',
                 reverseButtons: true
             }).then(result => {
                 if (result.isConfirmed) {

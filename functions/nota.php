@@ -39,7 +39,7 @@ function generateNotaPDF($transaksi, $detail_jasa, $detail_sparepart, $conn) {
     $black = [0, 0, 0];
     $gray = [80, 80, 80];
     $light = [120, 120, 120];
-    $red = [200, 30, 30];
+    $red = [230, 0, 0];
     $green = [0, 140, 0];
     $orange = [255, 215, 0];
 
