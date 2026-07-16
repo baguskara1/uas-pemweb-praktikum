@@ -89,7 +89,7 @@ $current_path = $_SERVER['PHP_SELF'];
                 <p class="text-gray-500 text-xs capitalize"><?= $_SESSION['role'] ?? '' ?></p>
             </div>
         </div>
-        <a href="logout.php"
+        <a href="/logout.php"
             class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm text-gray-400 hover:text-red-400 hover:bg-red-500/5 transition-colors">
             <i class="fas fa-right-from-bracket w-5 text-center"></i>
             <span>Logout</span>
