@@ -382,7 +382,7 @@ include '../../layout/sidebar.php';
             </div>
 
             <!-- Tab Navigation -->
-            <div class="bg-[#161622] rounded-xl border border-[#2a2a3a] overflow-hidden flex flex-col flex-1 min-h-0">
+            <div class="bg-[#161622] rounded-xl border border-[#2a2a3a] overflow-hidden flex flex-col flex-none md:flex-1 md:min-h-0">
                 <div class="flex border-b border-[#2a2a3a]">
                     <button @click="activeTab = 'jasa'" :class="activeTab === 'jasa' ? 'bg-[#e60000]/10 text-[#e60000] border-b-2 border-[#e60000]' : 'text-gray-400 hover:text-white'" class="px-6 py-3 text-sm font-medium transition-colors">
                         <i class="fas fa-wrench mr-2"></i>Jasa
@@ -393,8 +393,8 @@ include '../../layout/sidebar.php';
                 </div>
 
                 <!-- Tab: JASA -->
-                <div x-show="activeTab === 'jasa'" class="p-4 space-y-3 overflow-y-auto flex-1 max-h-[50vh] md:max-h-none">
-                    <div class="flex gap-3">
+                <div x-show="activeTab === 'jasa'" class="p-4 space-y-3 overflow-y-auto flex-none md:flex-1 max-h-[50vh] md:max-h-none">
+                    <div class="flex gap-3 flex-col sm:flex-row shrink-0">
                         <div class="relative flex-1">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
                             <input type="text" x-model="searchJasa" placeholder="Cari jasa..."
@@ -455,8 +455,8 @@ include '../../layout/sidebar.php';
                 </div>
 
                 <!-- Tab: SPAREPART -->
-                <div x-show="activeTab === 'sparepart'" class="p-4 space-y-3 overflow-y-auto flex-1 max-h-[50vh] md:max-h-none">
-                    <div class="flex gap-2 items-center">
+                <div x-show="activeTab === 'sparepart'" class="p-4 space-y-3 overflow-y-auto flex-none md:flex-1 max-h-[50vh] md:max-h-none">
+                    <div class="flex gap-2 items-center shrink-0">
                         <div class="relative flex-1">
                             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
                             <input type="text" x-model="searchSparepart" placeholder="Cari sparepart..."
